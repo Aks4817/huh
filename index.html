@@ -1,0 +1,154 @@
+<head>
+    <style>
+        html{
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+     
+        }
+        body{
+            margin: 0px;
+            background-image: radial-gradient(#555555, #111111);
+            font-size: 2vh;
+        }
+    
+        canvas{
+            width: 100vh;
+            height: 100vh;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            image-rendering: crisp-edges;
+        }
+        .tipBox{
+            position: absolute;
+            width: calc((100vw - 100vh) * 0.8);
+            height: 30vh;
+            right: calc((100vw - 100vh) * 0.1);
+            top: 5vh;
+            font-family: sans-serif;
+            display: flex;
+        }
+        .box{
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0vh 0vh 1vh 1vh rgb(20, 20, 20);
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
+        }
+        #tipImg{
+            height: 60%;
+            border: 0.25vh solid rgba(255,255,255, 0.4);
+            margin: 1vh;
+        }
+        #tipTitle{
+            width: 90%;
+            border-bottom: 0.25vh solid rgba(255,255,255, 0.4);
+        }
+        #code{
+            width: 90%;
+            border-bottom: 0.25vh solid rgba(255,255,255, 0.4);
+        }
+        .modeboxTitle{
+            width: 90%;
+            border-bottom: 0.25vh solid rgba(255,255,255, 0.4);
+            margin: 5%;
+        }
+        #tipText{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .t{
+            margin: 1vh;
+            margin-left: 5%;
+            width: 90%;
+        }
+        .modeBox{
+            position: absolute;
+            width: calc((100vw - 100vh) * 0.7);
+            height: 45vh;
+            right: calc((100vw - 100vh) * 0.15);
+            top: 45vh;
+            font-family: sans-serif;
+            display: block;
+        }
+        #modeSelect{
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 0.25vh solid rgba(255,255,255, 0.4);
+            color: white;
+            font-size: 3vh;
+            margin-left: 5%;
+        }
+        option{
+            background-color: rgb(100, 100, 100);
+        }
+        #chatBox{
+            background-color: rgba(0, 0, 0, 0.2);
+            width: calc(90% - 0.5vh);
+            height: 30%;
+            margin-left: 5%;
+            overflow-y: scroll;
+            
+            padding-left: 0.5vh;
+            padding-top: 0.5vh;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.9vh;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        #chatMsg{
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 90%;
+            margin-left: 5%;
+            font-size: 1.9vh;
+            border: none;
+            color: white;
+        }
+    </style>
+    <title>Fairy Chess</title>
+    <link rel="icon" type="image/png" href="./assets/pieces/elk.png">
+</head>
+
+<body>
+    <div class="tipBox box">
+        <img id="tipImg" src="assets/pieces/elk.png">
+        <div id="tipText">
+            <h1 id="tipTitle">Elk</h1>
+            <p class="t" id="tipP">Moves to spaces in the perimeter of the 5x5 square around it.</p>
+        </div>
+    </div>
+    <div class="box modeBox">   
+        <h1 class="modeboxTitle">Select Mode</h1>
+        <div class="t" id="mode"></div>
+        <select id="modeSelect" oninput="selectMode()"></select>
+        <!-- render color 
+            remove play with button after 1 click
+            randomise 4 digit code
+
+             -->
+        <br>
+        <br>
+        <div class="t">Current Room Code : <span id="code"></span></div>
+        <br ><div class="t" id="joining_code">
+            <label id="label_id">Enter room Code to join :</label>
+            <input type="number" id="roomreq"></input>
+        <div id="err" style="color: red;"></div></div>
+        <br>
+        <div class="t" id="color"></div>
+        <div class="t" id="turn"></div>
+        <br>
+        <div class="t">
+            <button id="play with random">Play With random </button>
+            <button id="Start Room">Start Room </button>
+            <button id="Join Room">Join Room </button>
+        </div>
+    </div>
+</body>
+
+<script src="pieces.js"></script>
+<script src="boards.js"></script>
+<script src="main.js"></script>
